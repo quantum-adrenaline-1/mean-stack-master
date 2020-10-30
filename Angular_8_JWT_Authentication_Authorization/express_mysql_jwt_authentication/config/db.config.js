@@ -1,3 +1,8 @@
+/**
+ * This module defines object having just the database configuration as a modular JavaScript module
+ * and exported to be used at the data access layer
+ */
+
 module.exports = {
     HOST: 'localhost:8080',
     USER: 'root',
