@@ -4,6 +4,7 @@
  * (Referring the Express.js documentation), the CORS is configured asynchronously
  */
 
+
  /* 'express' is imported as the core framework library module, used to build the RES api */
 const express = require('express');
 
