@@ -29,6 +29,7 @@ const sequelize = new Sequelize(
  * 1. all the database and all database configuration implemented in db.config.js
  * 2. all the models and their ORM in models/
  * 3. the relationship between the models (implemented in this module)
+ * 4. this module acts like the frontier for all the models in the application in the 'models' package
  */
 const db = {};
 
