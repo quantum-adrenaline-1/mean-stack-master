@@ -1,3 +1,7 @@
+/**
+ * This module defines the Sequelize class instance detailed with the model entities and it's ORM so that database transaction can be done easily with the
+ * inbuilt database trasaction functions by the ORM library module Sequelize 
+ */
 const config = require('../config/db.config');
 const Sequelize = require('sequelize');
 
