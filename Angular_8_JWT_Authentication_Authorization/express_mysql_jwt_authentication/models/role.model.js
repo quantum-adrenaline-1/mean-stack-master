@@ -11,7 +11,7 @@
  * @param {name} Sequelize 
  */
 
-
+/* Here the entity model is defined along with the entity table in the database and the mapping of model fields with table columns */
 module.exports = (sequelize, Sequelize) => {
                     const Role = sequelize.define('roles', {
                         id: {

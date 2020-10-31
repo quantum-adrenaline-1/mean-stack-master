@@ -1,6 +1,6 @@
 /**
  * This module is ment to define and implement ORM.
- * 'sequelize' --> has the methods to implement the ORM
+ * 'sequelize' --> onject of class Sequelize that is constructed with all the database config from db.config.js such as dialect, db name, host, credentials and pool config
  * 'Sequelize' --> has all the SQL datatypes a column must possess
  * 
  * define(1st_argument, 2nd_argument) -
@@ -16,6 +16,7 @@
  * @param {password} Sequelize 
  */
 
+/* Here the entity model is defined along with the entity table in the database and the mapping of model fields with table columns */
 module.exports = (sequelize, Sequelize) => {
                     const User = sequelize.define('users', {
                         username: {
