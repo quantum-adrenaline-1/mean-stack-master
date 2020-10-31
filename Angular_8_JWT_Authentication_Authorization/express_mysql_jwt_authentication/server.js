@@ -64,3 +64,36 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
                     console.log(`\nServer is listening on port ${PORT}!`);
                 });
+
+/**
+ * Importing db object from index.js
+ * It is probably like the default export from the 'models' package, so importing the 'models' package imports the 'db' object from index.js
+ */
+const db = require('./models');
+const Role = db.role;
+
+/* Drop and re-sync the role table in the database */
+db.sequelize.sync({force: true}).then(
+    () => {
+        console.log('Drop and Resync DB');
+        intial();
+    }
+);
+
+/* This function helps create three records for the 'role' table in the database */
+const intial = () => {
+                Role.create({
+                    id: 1,
+                    name: 'user'
+                });
+                
+                Role.create({
+                    id: 2,
+                    name: 'moderator'
+                });
+
+                Role.create({
+                    id: 3,
+                    name: 'admin'
+                });
+            };
