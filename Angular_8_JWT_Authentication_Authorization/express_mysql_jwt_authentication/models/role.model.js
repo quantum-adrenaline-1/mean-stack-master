@@ -11,7 +11,11 @@
  * @param {name} Sequelize 
  */
 
-/* Here the entity model is defined along with the entity table in the database and the mapping of model fields with table columns */
+/**
+ * Here the entity model is defined along with the entity table in the database and the mapping of model fields with table columns
+ * 
+ * This module exports the config object of entity model 'role' and it's ORM using a function 
+ */
 module.exports = (sequelize, Sequelize) => {
                     const Role = sequelize.define('roles', {
                         id: {
