@@ -1,5 +1,5 @@
 /**
- * This module defines object having just the database configuration as a modular JavaScript module
+ * This module defines config object (like database.properties) having just the database configuration as a modular JavaScript module
  * and exported to be used at the data access layer
  */
 
