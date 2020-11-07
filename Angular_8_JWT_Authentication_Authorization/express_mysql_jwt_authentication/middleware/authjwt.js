@@ -70,6 +70,9 @@ const isModerator = (request, response, next) => {
                                         return;
                                     }
                                 }
+                                response.status(403).send({
+                                    message: "Requires Moderator Role!"
+                                });
                             }
                         )
                     }
