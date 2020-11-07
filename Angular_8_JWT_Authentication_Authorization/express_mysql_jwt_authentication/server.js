@@ -97,3 +97,9 @@ const intial = () => {
                     name: 'admin'
                 });
             };
+
+/**
+ * Importing all the routing functions from the 'routes' package in the server module
+ */
+require("./routes/auth.routes")(app);
+require("./routes/user.routes")(app);
