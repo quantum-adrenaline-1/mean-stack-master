@@ -1,5 +1,8 @@
 const { request, response } = require("express");
 
+/**
+ * These are the request and response for testing authorization
+ */
 exports.allAccess = (request, response) => {
                         response.status(200).send("Public Content");
                     };
