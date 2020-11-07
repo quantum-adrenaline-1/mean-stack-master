@@ -63,7 +63,7 @@ exports.signin = (request, response) => {
                         }
 
                         /* Validation for user password as per the registered password for that user */
-                        var passwordIsValid = bcrypt.compareSync(
+                        const passwordIsValid = bcrypt.compareSync(
                             request.body.password, user.password
                         );
                         if (!passwordIsValid) {
@@ -74,7 +74,7 @@ exports.signin = (request, response) => {
                         }
 
                         /* Getting user access token to include in response */
-                        var token = jwt.sign({id: user.id}, config.secret, {
+                        const token = jwt.sign({id: user.id}, config.secret, {
                             expiresIn: 86400 // 86400 seconds = 24 hours
                         });
 
@@ -93,7 +93,7 @@ exports.signin = (request, response) => {
                                     roles: authorities,
                                     accessToken: token
                                 });
-                            })
+                            });
                     })
                     .catch(error => {
                         response.status(500).send({
