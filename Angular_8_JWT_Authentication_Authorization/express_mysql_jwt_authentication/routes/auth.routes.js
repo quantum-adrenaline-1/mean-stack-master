@@ -24,11 +24,12 @@ module.exports = app => {
                         [
                             verifySignUp.checkDuplicateUsernameOrEmail,
                             verifySignUp.checkRolesExisted
-                        ]
+                        ],
+                        controller.signup
                     );
 
                     /**
                      * The controller function with business logic for 'login' is executed for this route 
                      */
-                    app.post("/api/auth/signin", controller.signin)
+                    app.post("/api/auth/signin", controller.signin);
                 }
