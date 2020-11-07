@@ -13,8 +13,13 @@ import { BoardUserComponent } from './board-user/board-user.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 @NgModule({
+  /**
+   * 'declaration' property has the declaration of all the user created components
+   * these declarations are used while 'ng' tool refers app.module.ts for bootstraping building and running the application
+   */
   declarations: [
     AppComponent,
     LoginComponent,
@@ -25,13 +30,16 @@ import { HttpClientModule } from '@angular/common/http'
     BoardModeratorComponent,
     BoardUserComponent
   ],
+  /**
+   * 'imports' lists all the standard modules provided by the Angular framework
+   */
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
