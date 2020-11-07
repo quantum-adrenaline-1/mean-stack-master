@@ -4,7 +4,7 @@
  */
 
 module.exports = {
-    HOST: 'localhost:3306',
+    HOST: 'localhost',
     USER: 'root',
     PASSWORD: 'yogirajDB',
     DB: 'mean_authentication_authorization',
