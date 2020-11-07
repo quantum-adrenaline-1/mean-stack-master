@@ -45,14 +45,14 @@ db.sequelize = sequelize;
 db.user = require('../models/user.module')(sequelize, Sequelize);
 db.role = require('../models/role.model')(sequelize, Sequelize);
 
-/* Defining the relationship between the model entities */
+/* Defining the relationship 'Many-to-Many' between the model entities */
 db.role.belongsToMany(db.user, {
     through: 'user_roles',
     foreignkey: 'roleId',
     otherKey: 'userId'
 });
 
-/* Defining the relationship between the model entities */
+/* Defining the relationship 'Many-to-Many' between the model entities */
 db.user.belongsToMany(db.role, {
     through: 'user_roles',
     foreignkey: 'userId',
