@@ -13,7 +13,7 @@ const sequelize = new Sequelize(
     {
         host: config.HOST,
         dialect: config.dialect,
-        operatorsAliases: false,
+        // operatorsAliases: false,
 
         pool: {
             max: config.pool.max,
@@ -42,10 +42,10 @@ db.sequelize = sequelize;
 /**
  * Importing the model and it's ORM config from the entity model modules
  */
-db.user = require('../models/user.module')(sequelize, Sequelize);
-db.role = require('../models/role.model')(sequelize, Sequelize);
+db.user = require('./user.model')(sequelize, Sequelize);
+db.role = require('./role.model')(sequelize, Sequelize);
 
-/* Defining the relationship 'Many-to-Many' between the model entities */
+/* Defining the relationship "Many-to-Many" between the model entities */
 db.role.belongsToMany(db.user, {
     through: 'user_roles',
     foreignkey: 'roleId',
