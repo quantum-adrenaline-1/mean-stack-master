@@ -15,7 +15,7 @@ const User = db.user;
 
 /* Authentication */
 const verifyToken = (request, response, next) => {
-                        let token = request.headers["x-access-token"];
+                        const token = request.headers["x-access-token"];
                         
                         if (!token) {
                             return response.status(403).send({
@@ -74,7 +74,7 @@ const isModerator = (request, response, next) => {
                                     message: "Requires Moderator Role!"
                                 });
                             }
-                        )
+                        );
                     }
                 );            
             };
@@ -86,11 +86,11 @@ const isModeratorOrAdmin = (request, response, next) => {
                                 user.getRoles().then(
                                     roles => {
                                         for (let i = 0; i < roles.length; i++) {
-                                            if (roles[i] === "moderator") {
+                                            if (roles[i].name === "moderator") {
                                                 next();
                                                 return;
                                             }
-                                            if (roles[i] === "admin") {
+                                            if (roles[i].name === "admin") {
                                                 next();
                                                 return;
                                             }
