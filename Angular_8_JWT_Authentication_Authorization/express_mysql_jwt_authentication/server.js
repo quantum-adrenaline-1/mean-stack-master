@@ -23,10 +23,10 @@ const cors = require('cors');
 /* Creating Server for the back-end application */
 var app = express();
 
-/* List of the allowed hosts */
+// /* List of the allowed hosts */
 const allowList = ['http://localhost:4200'];
 
-/* CORS configuration and origin validation */
+// /* CORS configuration and origin validation */
 const corsOptionsDelegate = (request, callback) => {
                                 let corsOptions = null;
 
@@ -40,6 +40,11 @@ const corsOptionsDelegate = (request, callback) => {
                                 */
                                 callback(null, corsOptions);
                             }
+
+// var corsOptions = {
+//     origin: "http://localhost:8081"
+// };
+// app.use(cors(corsOptions));
 
 /* Parse request of content-type: application/json */
 app.use(bodyParser.json());
@@ -55,9 +60,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
  */
 app.get('/', cors(corsOptionsDelegate), 
             (request, response) => {
-                response.json({ message: 'Hey, this is great, a Express server using Node.js after long time! are the changes loading?? :-/' })
+                response.json({ message: 'Hey, this is great, a Express server using Node.js after long time! are the changes loading?? :-/ ' + 
+                                         'Yes!! they are loading!!' })
             });
 
+/**
+ * Importing all the routing functions from the 'routes' package in the server module
+ */
+require("./routes/auth.routes")(app);
+require("./routes/user.routes")(app);
 
 /* Set port and listen for request over it */
 const PORT = process.env.PORT || 8080;
@@ -73,12 +84,14 @@ const db = require('./models');
 const Role = db.role;
 
 /* Drop and re-sync the role table in the database */
-db.sequelize.sync({force: true}).then(
-    () => {
-        console.log('Drop and Resync DB');
-        intial();
-    }
-);
+// db.sequelize.sync({force: true}).then( () => {
+//         console.log('Drop and Resync DB');
+//         intial();
+//     }
+// );
+
+/* This will only update the database and not drop the previous data */
+db.sequelize.sync();
 
 /* This function helps create three records for the 'role' table in the database */
 const intial = () => {
@@ -97,9 +110,3 @@ const intial = () => {
                     name: 'admin'
                 });
             };
-
-/**
- * Importing all the routing functions from the 'routes' package in the server module
- */
-require("./routes/auth.routes")(app);
-require("./routes/user.routes")(app);
