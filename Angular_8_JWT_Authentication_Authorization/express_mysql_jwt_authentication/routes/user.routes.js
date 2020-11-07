@@ -13,7 +13,7 @@ module.exports = app => {
                     });
 
                     /**
-                     * Test route which is available all time to access
+                     * Test route which is available all user roles to access
                      * Most likely, use to check for server status if it is responding to the user requests or not
                      */
                     app.get("/api/test/all", controller.allAccess);
@@ -22,17 +22,26 @@ module.exports = app => {
                      * This is a priviledge access route for 'User' role
                      * A valid access token required
                      */
-                    app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
+                    app.get("/api/test/user", 
+                            [authJwt.verifyToken], 
+                            controller.userBoard
+                        );
 
                     /**
                      * This is a priviledge access route for 'Moderator' role
                      * A valid access token required
                      */
-                    app.get("/api/test/mod", [authJwt.verifyToken, authJwt.isModerator], controller.moderatorBoard);
+                    app.get("/api/test/mod", 
+                            [authJwt.verifyToken, authJwt.isModerator], 
+                            controller.moderatorBoard
+                        );
 
                     /**
                      * This is a priviledge access route for 'Admin' role
                      * A valid access token required
                      */
-                    app.get("/api/test/admin", [authJwt.verifyToken, authJwt.isAdmin], controller.adminBoard);
+                    app.get("/api/test/admin",
+                            [authJwt.verifyToken, authJwt.isAdmin],
+                            controller.adminBoard
+                        );
                 };
