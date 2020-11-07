@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    BoardAdminComponent
+    BoardAdminComponent,
+    BoardModeratorComponent
   ],
   imports: [
     BrowserModule,
