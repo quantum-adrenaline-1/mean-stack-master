@@ -39,7 +39,15 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     FormsModule,
     HttpClientModule
   ],
+  /**
+   * 'providers' is the list of all the helpers / 'help providers'
+   */
   providers: [authInterceptorProviders],
+  /**
+   * 'bootstrap' is the property that references a component which is the root component of the application
+   * This component links and associates with all the other components in the application
+   * This component is used by app.module.ts to bootstrap the application during building or executing the application
+   */
   bootstrap: [AppComponent]
 })
 export class AppModule { }
