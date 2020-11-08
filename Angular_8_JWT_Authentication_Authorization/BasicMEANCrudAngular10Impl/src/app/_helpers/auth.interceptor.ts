@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from '../_service/token-storage.service';
 
 /* Header key for the token */
-const TOKEN_HEADER_KEY = 'Authorization';
+const TOKEN_HEADER_KEY = 'x-access-token';
 
 /**
  * This is like a service, specifically an iterceptor (like a helper) so it is injectable
