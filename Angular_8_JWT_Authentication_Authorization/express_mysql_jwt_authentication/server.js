@@ -41,10 +41,10 @@ const corsOptionsDelegate = (request, callback) => {
                                 callback(null, corsOptions);
                             }
 
-// var corsOptions = {
-//     origin: "http://localhost:8081"
-// };
-// app.use(cors(corsOptions));
+var corsOptions = {
+    origin: "http://localhost:4200"
+};
+app.use(cors(corsOptions));
 
 /* Parse request of content-type: application/json */
 app.use(bodyParser.json());
@@ -58,7 +58,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
  * 2. CORS configuration and origin validation
  * 3. Handler function
  */
-app.get('/', cors(corsOptionsDelegate), 
+app.get('/', cors(corsOptions), 
             (request, response) => {
                 response.json({ message: 'Hey, this is great, a Express server using Node.js after long time! are the changes loading?? :-/ ' + 
                                          'Yes!! they are loading!!' })
