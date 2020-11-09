@@ -1,1 +1,88 @@
-<p>login works!</p>
+<!-- 
+    This is the template for the login form in 'login' component
+    The form is inside div's of class 'card' and 'card-container'
+    The elements of this template are -
+        i. user-account-avatar image
+        ii. form
+        iii. button handling form action
+        iv. UI acknowledgement for successful login of user
+ -->
+<div class="col-md-12">
+    <div class="card card-container">
+        <img 
+            src="///ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            alt="user-avatar-image"
+            id="profile-img"
+            class="profile-img-card"
+        />
+        <form
+            name="form"
+            #f="ngForm"
+            *ngIf="!isLoggedIn"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            novalidate
+        >
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input 
+                    type="text"
+                    name="username"
+                    [(ngModel)]="form.username"
+                    #username="ngModel"
+                    class="form-control"
+                    required    
+                >
+                <div 
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="username.errors.required && f.submitted"
+                >
+                    Username is required!                  
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                    name="password"
+                    type="password" 
+                    class="form-control"
+                    [(ngModel)]="form.password"
+                    #password="ngModel"
+                    required
+                    minlength="6"
+                >
+                <div 
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="f.submitted && password.invalid"
+                >
+                    <div *ngIf="password.errors.required">Password is required!</div>
+                    <div *ngIf="password.errors.minlength">
+                        Password must be of at least 6 characters
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">
+                    Login
+                </button>
+            </div>
+            <div class="form-group">
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="f.submitted && isLoginFailed
+                ">
+                    Login failed: {{ errorMessage }}
+                </div>
+            </div>
+        </form>
+
+        <div 
+            class="alert alert-success"
+            *ngIf="isLoggedIn"
+        >
+            Logged in as {{ this.roles }}.
+        </div>
+    </div>
+</div>
