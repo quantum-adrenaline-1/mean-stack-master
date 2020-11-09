@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_service/auth.service';
 
 /**
- * All the field variables of this component class are ones required in the handling function logic in this class that define the state of this component
- * Also, these field variables are also used in the template of this component for validation conditions and displaying status strings like success or error 
+ * The component class for registration form invovles fields such as 'username', 'email' and 'password'
+ * 'onSubmit()' method is used to handle the submit action of form
+ * There are flag field like 'isSuccessful' and 'isSignUpFailed' for implementing validations and error UI acknowledgement handling in the template
+ * The form object possess the submitted user profile information for registration 
  */
 @Component({
   selector: 'app-register',
