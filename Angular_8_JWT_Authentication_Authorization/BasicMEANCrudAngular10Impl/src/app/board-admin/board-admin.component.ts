@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../_service/user.service';
 
+/**
+ * This component is specifically for the 'admin' role
+ */
 @Component({
   selector: 'app-board-admin',
   templateUrl: './board-admin.component.html',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardAdminComponent implements OnInit {
 
-  constructor() { }
+  content: string;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getAdminBoard().subscribe(
+      successfulResponse => this.content = successfulResponse,
+      error => this.content = JSON.parse(error.error).message
+    );
   }
 
 }
