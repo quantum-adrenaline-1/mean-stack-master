@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../_service/user.service';
 
+/**
+ * This component is specifically for the 'user' role
+ */
 @Component({
   selector: 'app-board-user',
   templateUrl: './board-user.component.html',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardUserComponent implements OnInit {
 
-  constructor() { }
+  content: string;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUserBoard().subscribe(
+      successfulResponse => this.content = successfulResponse,
+      error => this.content = JSON.parse(error.error).message
+    );
   }
 
 }
