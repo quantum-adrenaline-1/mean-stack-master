@@ -1,1 +1,118 @@
-<p>register works!</p>
+<!--
+    The registration form in this template is implemented with Form Validation.
+    The validations are implemented as follows -
+        i. username: required, minLength=3, maxLength=20
+        ii. email: required, email format
+        iii. password: required, minLength=6 
+-->
+
+<div class="col-md-6">
+    <div class="card card-container">
+        <img
+            id="profile-img" 
+            src="///ssl.gstatic.com/accounts/ui/avatar_2x.png" 
+            class="profile-img-card"
+        />
+        <!-- 
+            First, on submit, the handler function 'onSubmit' will execute for 'submit' action of form 
+            It, will then set the conditional flag 'isSuccessful' which will be evaluate in the attribute 'ngIf of 'form' tag
+            after the response is obtained
+            Also, id with reference 'f' is created for the registration form, to which the Angular Framework form type 'ngForm' is assigned.
+            This reference 'f' is the reference for the entire registration form and is used in validations of every field in the form in this HTML template
+            to see if the 'submitted' flag is set as 'true' for the form after submitting it.
+            Everywhere throught the form, 'invalid' flag of validation will be set for the respective field if the value specified for it is
+            not as per the validation specification mentioned after 'required' keyword in the 'input' tag for every field
+        -->
+        <form
+            *ngIf="!isSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate
+        >
+            <!-- Here, the form starts, the division tag for the entire form is of class 'form-group' -->
+            <!-- USERNAME FIELD -->
+            <!--for attribute is referenced using the target tag's name-->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <!-- Here, this input tag is model binded with 'username' inside the 'form' field of component class alongwith validation information-->
+                <input 
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    [(ngModel)]="form.username"
+                    required
+                    minlenth="3"
+                    maxlength="20"
+                    #username="ngModel"
+                />
+                <!-- VALIDATION RESULT FIELD FOR USERNAME -->
+                <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                    <div *ngIf="username.errors.required">Username is required</div>
+                    <div *ngIf="username.errors.minlength">
+                        Username must be at least 3 character
+                    </div>
+                    <div *ngIf="username.errors.maxlength">
+                        Username must be at most 20 characters
+                    </div>
+                </div>
+            </div>
+            <!-- EMAIL FIELD -->
+            <!--for attribute is referenced using the target tag's name-->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <!-- Here, this input tag is model binded with 'email' inside the 'form' field of component class alongwith validation information -->
+                <input 
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    [(ngModel)]="form.email"
+                    required
+                    email
+                    #email="ngModel"
+                />
+                <!-- VALIDATION RESULT FIELD FOR EMAIL -->
+                <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.email">
+                        Email must be a valid email address
+                    </div>
+                </div>
+            </div>
+            <!-- PASSWORD FIELD -->
+            <!--for attribute is referenced using the target tag's name-->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <!-- Here, this input tag is model binded with 'password' inside the 'form' field of component class alongwith validation information -->
+                <input 
+                    type="password"
+                    name="password"
+                    [(ngModel)]="form.password"
+                    class="form-control"
+                    required
+                    minlength="6"
+                    #password="ngModel"
+                >
+                <!-- VALIDATION RESULT FIELD FOR PASSWORD -->
+                <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.password">
+                        Password must be of at least 6 characters
+                    </div>
+                </div>
+            </div>
+            <!-- Sign up button of the form -->
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">Sign Up</button>
+            </div>
+            <!-- Error message acknowledgement in UI for error after submit -->
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Signup failed!<br />{{errorMessage}}
+            </div>
+        </form>
+
+        <div class="alert alert-success" *ngIf="isSuccessful">
+            Your registration is successful!
+        </div>
+    </div> 
+</div>
