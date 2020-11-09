@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../_service/auth.service';
 
+/**
+ * All the field variables of this component class are ones required in the handling function logic in this class that define the state of this component
+ * Also, these field variables are also used in the template of this component for validation conditions and displaying status strings like success or error 
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
