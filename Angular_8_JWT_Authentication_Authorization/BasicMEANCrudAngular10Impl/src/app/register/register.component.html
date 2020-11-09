@@ -96,7 +96,7 @@
                 <!-- VALIDATION RESULT FIELD FOR PASSWORD -->
                 <div class="alert-danger" *ngIf="f.submitted && password.invalid">
                     <div *ngIf="password.errors.required">Password is required</div>
-                    <div *ngIf="password.errors.password">
+                    <div *ngIf="password.errors.minlength">
                         Password must be of at least 6 characters
                     </div>
                 </div>
